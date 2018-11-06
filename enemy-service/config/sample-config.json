@@ -1,0 +1,15 @@
+{
+  "environment": "development",
+  "hydra": {
+    "serviceName": "enemy-service",
+    "serviceIP": "",
+    "servicePort": 0,
+    "serviceType": "enemy",
+    "serviceDescription": "Returns an angry message to whoever calls it",
+    "redis": {
+      "url": "127.0.0.1",
+      "port": 6379,
+      "db": 15
+    }
+  }
+}

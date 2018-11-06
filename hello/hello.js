@@ -8,11 +8,13 @@ hydraExpress.init(config, () => {})
     .then((serviceInfo) => {
         console.log('serviceInfo', serviceInfo)
         hydra.on('message', (message) => {
+            console.log('message reply', message)
+
             let messageReply = hydra.createUMFMessage({
                 to: message.frm,
                 frm: 'hello:/',
                 bdy: {
-                    msg: `Hello from ${hydra.getServiceName()} - ${hydra.getInstanceID()}`
+                    msg: generateResponse(message.frm)
                 }
             })
             hydra.sendMessage(messageReply);
@@ -22,3 +24,14 @@ hydraExpress.init(config, () => {})
     .catch(err => {
         console.log('Error', err)
     })
+
+function generateResponse(from) {
+    switch(from) {
+        case 'friend:/':
+            return `Hello my friend.`
+        case 'enemy-service:/':
+            return `You shall not pass!`
+        default:
+            return `Howdy stranger!`
+    }
+}

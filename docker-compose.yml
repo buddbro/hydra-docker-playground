@@ -12,6 +12,12 @@ services:
       - "3001:3001"
     depends_on:
       - "redis"
+  enemy:
+    image: buddbro/hydra-enemy
+    ports:
+      - "3002:3002"
+    depends_on:
+      - "redis"
   redis:
     image: redis:alpine
     ports:
